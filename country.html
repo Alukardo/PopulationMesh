@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loading...</title>
+    <!-- 优化：添加专业字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/Countrymap.css" />
+    <link rel="stylesheet" href="./css/country.css" />
+</head>
+<body>
+<!-- Loading Overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-title">LOADING</div>
+    <div class="loading-country" id="loadingCountry">...</div>
+    <div class="loading-status" id="loadingStatus">Initializing...</div>
+    <div class="loading-progress">
+        <div class="loading-progress-bar">
+            <div class="loading-progress-bar-fill" id="loadingProgressBar"></div>
+        </div>
+    </div>
+    <div class="loading-details" id="loadingDetails"></div>
+</div>
+
+<!-- Title Section -->
+<div class="title">
+    <p class="title_subtitle">COUNTRY MESH</p>
+    <h1 class="title_title" id="countryTitle">Loading...</h1>
+    <button id="lightToggle" class="light-control-btn">Toggle Light Rotation</button>
+    <div id="scaleBar" class="scale-bar">
+        <div class="scale-bar-content">
+            <div class="scale-bar-title">Terrain Height</div>
+            <div class="scale-bar-gradient-container">
+                <svg width="200" height="50" class="scale-bar-gradient">
+                    <defs>
+                        <linearGradient id="heightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        </linearGradient>
+                    </defs>
+                    <rect x="0" y="10" width="200" height="30" fill="url(#heightGradient)"/>
+                    <line id="scaleLineLeft" x1="0" y1="10" x2="0" y2="40" stroke="#d8c39a" stroke-width="2"/>
+                    <line id="scaleLineMiddle" x1="100" y1="10" x2="100" y2="40" stroke="#d8c39a" stroke-width="1" opacity="0.5"/>
+                    <line id="scaleLineRight" x1="200" y1="10" x2="200" y2="40" stroke="#d8c39a" stroke-width="2"/>
+                    <text id="scaleLabelLeft" x="0" y="8" text-anchor="start" class="scale-bar-label-text">0</text>
+                    <text id="scaleLabelMiddle" x="100" y="8" text-anchor="middle" class="scale-bar-label-text">0</text>
+                    <text id="scaleLabelRight" x="200" y="8" text-anchor="end" class="scale-bar-label-text">0</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Theme Bar -->
+<div class="preset-theme-bar" id="presetThemeBar">
+    <button class="preset-btn" data-preset="default">Default</button>
+    <button class="preset-btn" data-preset="desert">Desert</button>
+    <button class="preset-btn" data-preset="ocean">Ocean</button>
+    <button class="preset-btn" data-preset="forest">Forest</button>
+    <button class="preset-btn" data-preset="night">Night</button>
+</div>
+
+<!-- Navigation Buttons -->
+<button id="prevBtn" class="nav-button prev" title="Previous Country">‹</button>
+<button id="nextBtn" class="nav-button next" title="Next Country">›</button>
+
+<!-- Minimap & Control Menu Wrapper -->
+<div class="right-panel-wrapper">
+    <div id="minimap" class="minimap"></div>
+    <div class="control-menu">
+        <div class="control-buttons">
+            <button class="menu-toggle" id="menuToggle">⚙️ Controls</button>
+            <button class="reset-btn" id="resetBtn">Reset</button>
+        </div>
+        <div class="menu-content" id="menuContent">
+            <div class="menu-section">
+                <h3>Color Controls</h3>
+                <div class="control-item">
+                    <label>Background Color</label>
+                    <input type="color" id="bgColor" value="#32430E">
+                </div>
+                <div class="control-item">
+                    <label>Base Plate Color</label>
+                    <input type="color" id="baseColor" value="#d8c39a">
+                </div>
+                <div class="control-item">
+                    <label>Terrain Color</label>
+                    <input type="color" id="terrainColor" value="#d8c39a">
+                </div>
+            </div>
+            <div class="menu-section">
+                <h3>Lighting</h3>
+                <div class="control-item">
+                    <label>Light Intensity: <span id="lightIntensityValue">1.5</span></label>
+                    <input type="range" id="lightIntensity" min="0" max="3" step="0.1" value="1.5">
+                </div>
+                <div class="control-item">
+                    <label>Ambient Light: <span id="ambientIntensityValue">0.5</span></label>
+                    <input type="range" id="ambientIntensity" min="0" max="2" step="0.1" value="0.5">
+                </div>
+                <div class="control-item">
+                    <label>
+                        <input type="checkbox" id="shadowToggle" checked> Enable Shadows
+                    </label>
+                </div>
+            </div>
+            <div class="menu-section">
+                <h3>Terrain</h3>
+                <div class="control-item">
+                    <label>Height Scale: <span id="heightScaleValue">1.0</span>x</label>
+                    <input type="range" id="heightScale" min="0.1" max="3" step="0.1" value="1.0">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Info Text -->
+<div id="infoText" class="info-text">
+    Loading...
+</div>
+
+<!-- Scripts -->
+<script src="./api/three.min.js"></script>
+<script src="./api/OrbitControls.js"></script>
+<script src="./api/d3/d3.v7.min.js"></script>
+<script src="./countryNavigation.js"></script>
+<script src="./js/ui.js"></script>
+<script src="./js/scene.js"></script>
+<script src="./country.js"></script>
+</body>
+</html>

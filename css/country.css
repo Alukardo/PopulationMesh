@@ -1,0 +1,187 @@
+/* country.css - Loading Overlay Styles */
+/* Optimized with frontend-design-pro principles */
+
+:root {
+    /* Colors - 使用带色调的中性色 */
+    --loading-bg: rgba(50, 67, 14, 0.98);
+    --loading-text: #f8f1dc;
+    --loading-accent: #d8c39a;
+    --loading-success: #7cb342;
+    --loading-warning: #ffb74d;
+    
+    /* Spacing - 8px baseline */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+}
+
+/* ==================== Loading Overlay ==================== */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--loading-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    /* 优化：使用专业的 cubic-bezier */
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: var(--space-md);
+}
+
+.loading-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.loading-title {
+    color: var(--loading-text);
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.15rem;
+    text-transform: uppercase;
+}
+
+.loading-country {
+    color: var(--loading-accent);
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-weight: 600;
+    margin-bottom: clamp(1rem, 4vw, 1.5rem);
+    letter-spacing: 0.2rem;
+    text-align: center;
+    max-width: 90%;
+    word-break: break-word;
+}
+
+/* Spinner */
+.loading-spinner {
+    width: clamp(40px, 8vw, 55px);
+    height: clamp(40px, 8vw, 55px);
+    border: 4px solid rgba(216, 195, 154, 0.3);
+    border-top-color: var(--loading-accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: clamp(1rem, 3vw, 1.25rem);
+}
+
+@keyframes spin {
+    to { 
+        transform: rotate(360deg); 
+    }
+}
+
+/* Progress Bar */
+.loading-progress {
+    width: min(400px, 90%);
+    margin-bottom: clamp(1rem, 3vw, 1.25rem);
+}
+
+.loading-progress-bar {
+    height: clamp(6px, 1.5vw, 10px);
+    background: rgba(216, 195, 154, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+}
+
+.loading-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--loading-accent), #f5e6c5);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+.loading-status {
+    color: rgba(248, 241, 220, 0.8);
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+/* Loading Details */
+.loading-details {
+    width: min(420px, 90%);
+    max-height: clamp(120px, 25vh, 200px);
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Mono', monospace;
+    font-size: clamp(0.65rem, 1.5vw, 0.8rem);
+    color: var(--loading-accent);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--loading-accent) rgba(216, 195, 154, 0.2);
+}
+
+.loading-details::-webkit-scrollbar {
+    width: 6px;
+}
+
+.loading-details::-webkit-scrollbar-track {
+    background: rgba(216, 195, 154, 0.1);
+    border-radius: 3px;
+}
+
+.loading-details::-webkit-scrollbar-thumb {
+    background: var(--loading-accent);
+    border-radius: 3px;
+}
+
+.loading-detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(216, 195, 154, 0.1);
+    font-size: inherit;
+}
+
+.loading-detail-item:last-child {
+    border-bottom: none;
+}
+
+.loading-detail-item.done {
+    color: var(--loading-success);
+}
+
+.loading-detail-item.loading {
+    color: var(--loading-warning);
+}
+
+.loading-time {
+    color: rgba(248, 241, 220, 0.5);
+    font-size: clamp(0.6rem, 1.3vw, 0.75rem);
+    margin-left: var(--space-sm);
+}
+
+/* ==================== Responsive ==================== */
+
+@media (max-width: 480px) {
+    .loading-overlay {
+        padding: var(--space-sm);
+    }
+    
+    .loading-details {
+        font-size: 0.65rem;
+    }
+    
+    .loading-country {
+        letter-spacing: 0.1rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .loading-overlay {
+        padding: var(--space-xl);
+    }
+}

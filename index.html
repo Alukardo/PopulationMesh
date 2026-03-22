@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Population Density Map | World Population 2020</title>
+    <!-- 优化：添加专业字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1 class="title">Population Density Map</h1>
+            <p class="subtitle">World Population 2020</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Intro Panel -->
+        <aside class="intro-panel">
+            <div class="intro-card">
+                <h2>About This Project</h2>
+                <p>
+                    An interactive visualization of global population density based on 2020 census data. 
+                    Click on any country to explore its detailed 3D population distribution.
+                </p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon">🌍</span>
+                        <span>Global Coverage</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎨</span>
+                        <span>Color Heatmap</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📊</span>
+                        <span>3D Detail View</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🗂️</span>
+                        <span>23 Countries</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="intro-card">
+                <h2>How to Use</h2>
+                <ul class="usage-list">
+                    <li>🖱️ <strong>Click</strong> on any country to view details</li>
+                    <li>🔎 <strong>Hover</strong> to see country name & population</li>
+                    <li>🔄 <strong>Scroll</strong> to zoom in/out</li>
+                </ul>
+            </div>
+
+            <div class="intro-card">
+                <h2>Legend</h2>
+                <div class="legend-container">
+                    <div class="legend-gradient"></div>
+                    <div class="legend-labels">
+                        <span>0</span>
+                        <span>600M</span>
+                        <span>1.2B</span>
+                    </div>
+                </div>
+                <p class="legend-note">Darker color = Higher population</p>
+            </div>
+        </aside>
+
+        <!-- Map Area -->
+        <div class="map-container">
+            <svg id="world-map"></svg>
+            <div id="tooltip" class="tooltip hidden"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <span>Data: World Population 2020</span>
+        <span class="divider">|</span>
+        <span>Powered by D3.js</span>
+    </footer>
+
+<script src="api/d3/d3.v7.min.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
