@@ -23,6 +23,17 @@ An interactive visualization of global population density based on 2020 census d
 - 📊 3D Detail View - Detailed country-level population distribution
 - 🗂️ 23 Countries - Comprehensive dataset
 
+## Screenshots
+
+### World Map (index.html)
+![World Map](screenshot-index.png)
+
+### Country Selection
+![Country Selection](screenshot-nav.png)
+
+### 3D Population Mesh (country.html)
+![3D Population Mesh](screenshot-country.png)
+
 ## Tech Stack
 
 - D3.js - Data visualization
