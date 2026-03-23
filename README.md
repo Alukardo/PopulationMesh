@@ -12,7 +12,7 @@ An interactive visualization of global population density based on 2020 census d
 **221308137-沈健煌** - Main developer
 
 ### Guidance
-**林捷 (主人)** - Project mentor and advisor
+**林捷** - Project mentor and advisor
 
 ---
 
