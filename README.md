@@ -26,13 +26,13 @@ An interactive visualization of global population density based on 2020 census d
 ## Screenshots
 
 ### World Map (index.html)
-![World Map](screenshot-index.png)
+![World Map](images/screenshot-index.png)
 
 ### Country Selection
-![Country Selection](screenshot-nav.png)
+![Country Selection](images/screenshot-nav.png)
 
 ### 3D Population Mesh (country.html)
-![3D Population Mesh](screenshot-country.png)
+![3D Population Mesh](images/screenshot-country.png)
 
 ## Tech Stack
 
